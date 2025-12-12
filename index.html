@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nationwide Bank PLC | Crypto-Style Banking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="screen">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <h2>Nationwide Bank PLC</h2>
+            <p>Banking Beyond Boundaries</p>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="login-container">
+            <div class="brand-header">
+                <div class="logo">
+                    <i class="fas fa-university"></i>
+                    <h1>Nationwide Bank PLC</h1>
+                </div>
+                <p class="tagline">Banking Beyond Boundaries</p>
+            </div>
+            
+            <div class="login-form">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Sign in to access your account</p>
+                
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                        <button class="toggle-password" type="button" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" id="forgotPassword">Forgot Password?</a>
+                </div>
+                
+                <button class="btn-primary" id="loginBtn">Sign In</button>
+                
+                
+                
+                <div class="divider">
+                    <span></span>
+                </div>
+                
+                <p class="register-link">Don't have an account? <a href="#" id="goToRegister">Create Account</a></p>
+            </div>
+            
+            <div class="login-footer">
+                <p>© 2023 Nationwide Bank PLC. All rights reserved.</p>
+                <p>FDIC Insured • 256-bit SSL Encryption</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Screen -->
+    <div id="registerScreen" class="screen hidden">
+        <div class="register-container">
+            <button class="btn-back" id="backFromRegister">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            
+            <div class="brand-header">
+                <div class="logo">
+                    <i class="fas fa-university"></i>
+                    <h1>Create Account</h1>
+                </div>
+                <p class="tagline">Join the future of banking</p>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-step" id="step1">
+                    <h2>Personal Information</h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="regFullName">Full Name *</label>
+                            <input type="text" id="regFullName" placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regNationality">Nationality *</label>
+                            <select id="regNationality">
+                                <option value="">Select Nationality</option>
+                                <option value="USA">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regDOB">Date of Birth *</label>
+                            <input type="date" id="regDOB">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regSSN">Social Security Number *</label>
+                            <input type="text" id="regSSN" placeholder="XXX-XX-XXXX" inputmode="numeric">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="regAddress">Address *</label>
+                            <input type="text" id="regAddress" placeholder="123 Main St, City, State, ZIP">
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="nextStep1">Next</button>
+                </div>
+                
+                <div class="form-step hidden" id="step2">
+                    <h2>Account Details</h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="regEmail">Email Address *</label>
+                            <input type="email" id="regEmail" placeholder="you@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regPhone">Phone Number *</label>
+                            <input type="tel" id="regPhone" placeholder="(123) 456-7890">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regPassword">Password *</label>
+                            <input type="password" id="regPassword" placeholder="Minimum 8 characters">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regConfirmPassword">Confirm Password *</label>
+                            <input type="password" id="regConfirmPassword" placeholder="Confirm your password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regAccountType">Account Type *</label>
+                            <select id="regAccountType">
+                                <option value="Savings">Savings Account</option>
+                                <option value="Checking">Checking Account</option>
+                                <option value="Premium">Premium Account</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="step-buttons">
+                        <button class="btn-secondary" id="prevStep2">Back</button>
+                        <button class="btn-primary" id="nextStep2">Next</button>
+                    </div>
+                </div>
+                
+                <div class="form-step hidden" id="step3">
+                    <h2>Security Setup</h2>
+                    <p class="subtitle">Create a 4-digit PIN for transaction verification</p>
+                    
+                    <div class="pin-setup">
+                        <div class="pin-display">
+                            <div class="pin-digit" id="pinDigit1">●</div>
+                            <div class="pin-digit" id="pinDigit2">●</div>
+                            <div class="pin-digit" id="pinDigit3">●</div>
+                            <div class="pin-digit" id="pinDigit4">●</div>
+                        </div>
+                        
+                        <div class="pin-input-container">
+                            <input type="text" id="pinInput" maxlength="4" inputmode="numeric" class="hidden">
+                            <div class="pin-pad">
+                                <div class="pin-row">
+                                    <button class="pin-key" data-value="1">1</button>
+                                    <button class="pin-key" data-value="2">2</button>
+                                    <button class="pin-key" data-value="3">3</button>
+                                </div>
+                                <div class="pin-row">
+                                    <button class="pin-key" data-value="4">4</button>
+                                    <button class="pin-key" data-value="5">5</button>
+                                    <button class="pin-key" data-value="6">6</button>
+                                </div>
+                                <div class="pin-row">
+                                    <button class="pin-key" data-value="7">7</button>
+                                    <button class="pin-key" data-value="8">8</button>
+                                    <button class="pin-key" data-value="9">9</button>
+                                </div>
+                                <div class="pin-row">
+                                    <button class="pin-key" data-value="clear">Clear</button>
+                                    <button class="pin-key" data-value="0">0</button>
+                                    <button class="pin-key" data-value="backspace">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-buttons">
+                        <button class="btn-secondary" id="prevStep3">Back</button>
+                        <button class="btn-primary" id="completeRegistration">Complete Registration</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIN Entry Screen -->
+    <div id="pinScreen" class="screen hidden">
+        <div class="pin-container">
+            <div class="brand-header">
+                <div class="logo">
+                    <i class="fas fa-university"></i>
+                    <h1>Secure Access</h1>
+                </div>
+            </div>
+            
+            <div class="pin-content">
+                <div class="user-info">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h2 id="pinUserName">Welcome</h2>
+                    <p>Enter your 4-digit PIN to continue</p>
+                </div>
+                
+                <div class="pin-display-container">
+                    <div class="pin-display">
+                        <div class="pin-digit-entry" id="pinEntry1"></div>
+                        <div class="pin-digit-entry" id="pinEntry2"></div>
+                        <div class="pin-digit-entry" id="pinEntry3"></div>
+                        <div class="pin-digit-entry" id="pinEntry4"></div>
+                    </div>
+                    <div class="pin-error" id="pinError"></div>
+                </div>
+                
+                <div class="pin-keypad">
+                    <div class="pin-row">
+                        <button class="pin-key-entry" data-value="1">1</button>
+                        <button class="pin-key-entry" data-value="2">2</button>
+                        <button class="pin-key-entry" data-value="3">3</button>
+                    </div>
+                    <div class="pin-row">
+                        <button class="pin-key-entry" data-value="4">4</button>
+                        <button class="pin-key-entry" data-value="5">5</button>
+                        <button class="pin-key-entry" data-value="6">6</button>
+                    </div>
+                    <div class="pin-row">
+                        <button class="pin-key-entry" data-value="7">7</button>
+                        <button class="pin-key-entry" data-value="8">8</button>
+                        <button class="pin-key-entry" data-value="9">9</button>
+                    </div>
+                    <div class="pin-row">
+                        <button class="pin-key-entry" data-value="clear">Clear</button>
+                        <button class="pin-key-entry" data-value="0">0</button>
+                        <button class="pin-key-entry" data-value="backspace">
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pin-lockout" id="pinLockout">
+                    <i class="fas fa-lock"></i>
+                    <h3>Account Temporarily Locked</h3>
+                    <p>Too many incorrect PIN attempts. Please try again in <span id="lockoutTimer">30</span> seconds.</p>
+                </div>
+            </div>
+            
+            <div class="pin-footer">
+                <p><i class="fas fa-shield-alt"></i> Your PIN is securely encrypted</p>
+                <button class="btn-secondary" id="logoutFromPin">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dashboardScreen" class="screen hidden">
+        <!-- Hamburger Menu (hidden by default) -->
+        <div class="hamburger-menu hidden" id="hamburgerMenu">
+            <div class="menu-header">
+                <div class="menu-user">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div>
+                        <h3 id="menuUserName">User Name</h3>
+                        <p id="menuUserEmail">user@example.com</p>
+                    </div>
+                </div>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="menu-items">
+                <a href="#" class="menu-item active" data-screen="dashboard">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#" class="menu-item" data-screen="myAccount">
+                    <i class="fas fa-user"></i> My Account
+                </a>
+                <a href="#" class="menu-item" data-screen="transactions">
+                    <i class="fas fa-exchange-alt"></i> Transactions
+                </a>
+                <a href="#" class="menu-item" data-screen="deposit">
+                    <i class="fas fa-money-bill-wave"></i> Deposit
+                </a>
+                <a href="#" class="menu-item" data-screen="transfer">
+                    <i class="fas fa-paper-plane"></i> Transfer
+                </a>
+                <a href="#" class="menu-item" data-screen="payBills">
+                    <i class="fas fa-file-invoice-dollar"></i> Pay Bills
+                </a>
+                <a href="#" class="menu-item" data-screen="buyCrypto">
+                    <i class="fas fa-coins"></i> Buy Crypto
+                </a>
+                <a href="#" class="menu-item" data-screen="bookFlight">
+                    <i class="fas fa-plane"></i> Book Flight
+                </a>
+                <a href="#" class="menu-item" data-screen="customerSupport">
+                    <i class="fas fa-headset"></i> Customer Support
+                </a>
+                <a href="#" class="menu-item logout" id="menuLogout">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </div>
+            
+            <div class="menu-footer">
+                <p>Version 2.1.0 • Crypto-Style UI</p>
+            </div>
+        </div>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Top Navigation -->
+            <div class="dashboard-header">
+                <button class="hamburger-btn" id="openMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-center">
+                    <h1>Nationwide Bank PLC</h1>
+                </div>
+                <div class="header-right">
+                    <button class="notification-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge hidden" id="notificationBadge">3</span>
+                    </button>
+                    <button class="support-btn" id="supportBtn">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Welcome Message -->
+                <div class="welcome-section">
+                    <h2>Welcome, <span id="dashboardUserName">User</span>!</h2>
+                    <p id="dashboardDate">Today is Monday, November 20, 2023</p>
+                </div>
+                
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <div class="balance-header">
+                        <h3>Available Balance</h3>
+                        <button class="balance-eye" id="toggleBalance">
+                            <i class="fas fa-eye" id="balanceEyeIcon"></i>
+                        </button>
+                    </div>
+                    <div class="balance-amount">
+                        <span class="currency">$</span>
+                        <span id="balanceAmount">12,450.75</span>
+                        <span class="balance-change positive">+2.4%</span>
+                    </div>
+                    <div class="balance-details">
+                        <div class="detail">
+                            <span>Daily Limit:</span>
+                            <span id="dailyLimit">$5,000.00</span>
+                        </div>
+                        <div class="detail">
+                            <span>Account Tier:</span>
+                            <span id="accountTier" class="tier-badge">Tier 3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="actions-grid">
+                        <button class="action-btn" data-action="deposit">
+                            <div class="action-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <span>Deposit</span>
+                        </button>
+                        <button class="action-btn" data-action="transfer">
+                            <div class="action-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <span>Transfer</span>
+                        </button>
+                        <button class="action-btn" data-action="payBills">
+                            <div class="action-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <span>Pay Bills</span>
+                        </button>
+                        <button class="action-btn" data-action="buyCrypto">
+                            <div class="action-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <span>Buy Crypto</span>
+                        </button>
+                        <button class="action-btn" data-action="bookFlight">
+                            <div class="action-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <span>Book Flight</span>
+                        </button>
+                        <button class="action-btn" data-action="support">
+                            <div class="action-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <span>Support</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Virtual Card -->
+                <div class="virtual-card-section">
+                    <h3>Virtual Visa Card</h3>
+                    <div class="card-container">
+                        <div class="bank-card" id="virtualCard">
+                            <div class="card-front">
+                                <div class="card-header">
+                                    <div class="card-logo">
+                                        <i class="fas fa-university"></i>
+                                        <span>Nationwide Bank</span>
+                                    </div>
+                                    <div class="card-type">
+                                        <span>VISA</span>
+                                    </div>
+                                </div>
+                                <div class="card-chip">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                                <div class="card-number">
+                                    <span id="cardNumber">•••• •••• •••• 4567</span>
+                                </div>
+                                <div class="card-details">
+                                    <div class="cardholder">
+                                        <label>Cardholder Name</label>
+                                        <span id="cardholderName">JOHN DOE</span>
+                                    </div>
+                                    <div class="expiry">
+                                        <label>Valid Thru</label>
+                                        <span id="cardExpiry">08/28</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-magnetic-strip"></div>
+                                <div class="card-cvv">
+                                    <label>CVV</label>
+                                    <div class="cvv-display">
+                                        <span id="cardCvv">•••</span>
+                                        <button class="show-cvv" id="showCvvBtn">
+                                            <i class="fas fa-eye"></i> Show
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <p>This card is issued by Nationwide Bank PLC. For customer service, call 1-800-NATIONWIDE.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action-btn" id="freezeCard">
+                                <i class="fas fa-snowflake"></i> Freeze Card
+                            </button>
+                            <button class="card-action-btn" id="blockCard">
+                                <i class="fas fa-ban"></i> Block Card
+                            </button>
+                            <button class="card-action-btn" id="flipCard">
+                                <i class="fas fa-sync-alt"></i> Flip Card
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Transactions -->
+                <div class="recent-transactions">
+                    <div class="section-header">
+                        <h3>Recent Transactions</h3>
+                        <a href="#" class="view-all" data-screen="transactions">View All</a>
+                    </div>
+                    <div class="transactions-list" id="transactionsList">
+                        <!-- Transactions will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Financial Advice -->
+                <div class="financial-advice">
+                    <div class="section-header">
+                        <h3>Financial Tips</h3>
+                        <button class="refresh-tips" id="refreshTips">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    <div class="tips-carousel">
+                        <div class="tip-card active" id="tip1">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Diversify your investments across different asset classes to minimize risk.</p>
+                        </div>
+                        <div class="tip-card" id="tip2">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Regularly review your spending patterns to identify areas for potential savings.</p>
+                        </div>
+                        <div class="tip-card" id="tip3">
+                            <i class="fas fa-piggy-bank"></i>
+                            <p>Set aside at least 20% of your income for savings and investments.</p>
+                        </div>
+                        <div class="tip-card" id="tip4">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>Enable two-factor authentication on all your financial accounts for added security.</p>
+                        </div>
+                        <div class="tip-card" id="tip5">
+                            <i class="fas fa-credit-card"></i>
+                            <p>Pay your credit card balance in full each month to avoid high interest charges.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-tip="1"></span>
+                        <span class="dot" data-tip="2"></span>
+                        <span class="dot" data-tip="3"></span>
+                        <span class="dot" data-tip="4"></span>
+                        <span class="dot" data-tip="5"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Account Screen -->
+    <div id="myAccountScreen" class="screen hidden">
+        <div class="account-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>My Account</h2>
+                <button class="btn-edit" id="editAccount">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+            </div>
+            
+            <div class="account-content">
+                <div class="account-card">
+                    <div class="account-header">
+                        <div class="account-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div>
+                            <h3 id="accountFullName">John Doe</h3>
+                            <p id="accountEmail">john.doe@example.com</p>
+                            <span class="account-badge" id="accountTypeBadge">Savings Account</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <h4>Personal Information</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Nationality</span>
+                            <span class="detail-value" id="accountNationality">USA</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Date of Birth</span>
+                            <span class="detail-value" id="accountDOB">01/15/1985</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Phone Number</span>
+                            <span class="detail-value" id="accountPhone">(123) 456-7890</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Address</span>
+                            <span class="detail-value" id="accountAddress">123 Main St, New York, NY 10001</span>
+                        </div>
+                        
+                        <h4>Account Information</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Account Number</span>
+                            <span class="detail-value" id="accountNumber">73449001266344</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Routing Number</span>
+                            <span class="detail-value" id="routingNumber">02688832</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account Tier</span>
+                            <span class="detail-value tier-badge" id="accountTierDetail">Tier 3</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Daily Transfer Limit</span>
+                            <span class="detail-value" id="dailyLimitDetail">$500,000</span>
+                        </div>
+                        
+                        <h4>Security Information</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Transaction PIN</span>
+                            <span class="detail-value pin-masked">●●●●</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Last Login</span>
+                            <span class="detail-value" id="lastLogin">Today, 10:30 AM</span>
+                        </div>
+                        
+                        <h4>Card Details</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Card Number</span>
+                            <span class="detail-value" id="fullCardNumber">4532 8943 2312 4567</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Cardholder Name</span>
+                            <span class="detail-value" id="fullCardholderName">JOHN DOE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Expiry Date</span>
+                            <span class="detail-value" id="fullCardExpiry">08/28</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">CVV</span>
+                            <span class="detail-value" id="fullCardCvv">123</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transactions Screen -->
+    <div id="transactionsScreen" class="screen hidden">
+        <div class="transactions-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Transaction History</h2>
+                <button class="btn-filter" id="filterTransactions">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+            
+            <div class="transactions-content">
+                <div class="filters-section hidden" id="filtersSection">
+                    <h4>Filter Transactions</h4>
+                    <div class="filter-options">
+                        <select id="filterType">
+                            <option value="">All Types</option>
+                            <option value="deposit">Deposit</option>
+                            <option value="transfer">Transfer</option>
+                            <option value="payment">Payment</option>
+                            <option value="crypto">Crypto</option>
+                            <option value="flight">Flight</option>
+                        </select>
+                        <select id="filterPeriod">
+                            <option value="">All Time</option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                        </select>
+                        <button class="btn-primary" id="applyFilters">Apply</button>
+                        <button class="btn-secondary" id="clearFilters">Clear</button>
+                    </div>
+                </div>
+                
+                <div class="transactions-list-full" id="transactionsListFull">
+                    <!-- Full transactions list will be loaded here -->
+                </div>
+                
+                <div class="load-more" id="loadMoreTransactions">
+                    <button class="btn-secondary">
+                        <i class="fas fa-spinner"></i> Load More Transactions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Screen -->
+    <div id="depositScreen" class="screen hidden">
+        <div class="deposit-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Deposit Funds</h2>
+                <div class="header-placeholder"></div>
+            </div>
+            
+            <div class="deposit-content">
+                <div class="deposit-card">
+                    <h3>Make a Deposit</h3>
+                    <p class="subtitle">Choose your deposit method and enter amount</p>
+                    
+                    <div class="form-group">
+                        <label for="depositAmount">Amount ($) *</label>
+                        <input type="number" id="depositAmount" min="1" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="depositType">Deposit Type *</label>
+                        <select id="depositType">
+                            <option value="">Select deposit type</option>
+                            <option value="check">Check Deposit</option>
+                            <option value="mobile">Mobile Deposit</option>
+                            <option value="wire">Wire Transfer</option>
+                            <option value="cash">Cash Deposit</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="depositDetailsContainer">
+                        <!-- Additional details based on deposit type -->
+                    </div>
+                    
+                    <div class="deposit-summary">
+                        <div class="summary-row">
+                            <span>Amount:</span>
+                            <span id="summaryAmount">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Fee (1%):</span>
+                            <span id="summaryFee">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total to Deposit:</span>
+                            <span id="summaryTotal">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="confirmDeposit">Confirm Deposit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transfer Screen -->
+    <div id="transferScreen" class="screen hidden">
+        <div class="transfer-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Transfer Funds</h2>
+                <div class="header-placeholder"></div>
+            </div>
+            
+            <div class="transfer-content">
+                <div class="transfer-type-selector">
+                    <button class="transfer-type-btn active" data-type="domestic">Domestic Transfer</button>
+                    <button class="transfer-type-btn" data-type="international">International Transfer</button>
+                </div>
+                
+                <!-- Domestic Transfer Form -->
+                <div class="transfer-form active" id="domesticForm">
+                    <div class="form-card">
+                        <h3>Domestic Transfer</h3>
+                        <p class="subtitle">Transfer funds within the United States</p>
+                        
+                        <div class="form-group">
+                            <label for="domesticName">Recipient Full Name *</label>
+                            <input type="text" id="domesticName" placeholder="John Smith">
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="domesticAccount">Account Number *</label>
+                                <input type="text" id="domesticAccount" placeholder="Enter account number">
+                            </div>
+                            <div class="form-group">
+                                <label for="domesticRouting">Routing Number *</label>
+                                <input type="text" id="domesticRouting" placeholder="Enter routing number">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="domesticAmount">Amount ($) *</label>
+                            <input type="number" id="domesticAmount" min="1" step="0.01" placeholder="0.00">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="domesticMethod">Transfer Method *</label>
+                            <select id="domesticMethod">
+                                <option value="ach">ACH Transfer</option>
+                                <option value="wire">Wire Transfer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="domesticMemo">Memo (Optional)</label>
+                            <input type="text" id="domesticMemo" placeholder="Payment for services">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="domesticBankAddress">Bank Address (Optional)</label>
+                            <input type="text" id="domesticBankAddress" placeholder="Bank name and address">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- International Transfer Form -->
+                <div class="transfer-form" id="internationalForm">
+                    <div class="form-card">
+                        <h3>International Transfer</h3>
+                        <p class="subtitle">Transfer funds to accounts outside the United States</p>
+                        
+                        <div class="form-group">
+                            <label for="internationalName">Recipient Account Name *</label>
+                            <input type="text" id="internationalName" placeholder="John Smith">
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="internationalIBAN">IBAN *</label>
+                                <input type="text" id="internationalIBAN" placeholder="Enter IBAN">
+                            </div>
+                            <div class="form-group">
+                                <label for="internationalSWIFT">SWIFT/BIC Code *</label>
+                                <input type="text" id="internationalSWIFT" placeholder="Enter SWIFT code">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="internationalAmount">Amount *</label>
+                                <input type="number" id="internationalAmount" min="1" step="0.01" placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="internationalCurrency">Currency *</label>
+                                <select id="internationalCurrency">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="JPY">JPY - Japanese Yen</option>
+                                    <option value="CAD">CAD - Canadian Dollar</option>
+                                    <option value="AUD">AUD - Australian Dollar</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="internationalMemo">Memo (Optional)</label>
+                            <input type="text" id="internationalMemo" placeholder="Payment for services">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="internationalBankAddress">Bank Address *</label>
+                            <input type="text" id="internationalBankAddress" placeholder="Bank name and address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="internationalPurpose">Purpose of Transfer *</label>
+                            <select id="internationalPurpose">
+                                <option value="">Select purpose</option>
+                                <option value="family">Family Support</option>
+                                <option value="business">Business Payment</option>
+                                <option value="education">Education Fees</option>
+                                <option value="investment">Investment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Transfer Summary -->
+                <div class="transfer-summary">
+                    <h4>Transfer Summary</h4>
+                    <div class="summary-row">
+                        <span>Transfer Type:</span>
+                        <span id="summaryType">Domestic</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Amount:</span>
+                        <span id="summaryTransferAmount">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Fee (1%):</span>
+                        <span id="summaryTransferFee">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total to Debit:</span>
+                        <span id="summaryTransferTotal">$0.00</span>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" id="confirmTransfer">Continue to Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pay Bills Screen -->
+    <div id="payBillsScreen" class="screen hidden">
+        <div class="bills-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Pay Bills</h2>
+                <div class="header-placeholder"></div>
+            </div>
+            
+            <div class="bills-content">
+                <div class="bills-card">
+                    <h3>Pay Your Bills</h3>
+                    <p class="subtitle">Quick and secure bill payments</p>
+                    
+                    <div class="form-group">
+                        <label for="billProvider">Bill Provider *</label>
+                        <select id="billProvider">
+                            <option value="">Select provider</option>
+                            <option value="electric">Electric Company</option>
+                            <option value="water">Water Utility</option>
+                            <option value="internet">Internet Service</option>
+                            <option value="phone">Mobile Phone</option>
+                            <option value="creditcard">Credit Card</option>
+                            <option value="mortgage">Mortgage</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billAccount">Account Number *</label>
+                        <input type="text" id="billAccount" placeholder="Your account number with provider">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billAmount">Amount ($) *</label>
+                        <input type="number" id="billAmount" min="1" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billDueDate">Due Date *</label>
+                        <input type="date" id="billDueDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billMemo">Memo (Optional)</label>
+                        <input type="text" id="billMemo" placeholder="Monthly payment">
+                    </div>
+                    
+                    <div class="bills-summary">
+                        <div class="summary-row">
+                            <span>Amount:</span>
+                            <span id="summaryBillAmount">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Fee:</span>
+                            <span id="summaryBillFee">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Payment:</span>
+                            <span id="summaryBillTotal">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="confirmBill">Pay Bill</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buy Crypto Screen -->
+    <div id="buyCryptoScreen" class="screen hidden">
+        <div class="crypto-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Buy Cryptocurrency</h2>
+                <div class="header-placeholder"></div>
+            </div>
+            
+            <div class="crypto-content">
+                <div class="crypto-card">
+                    <h3>Buy Cryptocurrency</h3>
+                    <p class="subtitle">Invest in digital assets with ease</p>
+                    
+                    <div class="form-group">
+                        <label for="cryptoType">Cryptocurrency *</label>
+                        <select id="cryptoType">
+                            <option value="bitcoin">Bitcoin (BTC)</option>
+                            <option value="ethereum">Ethereum (ETH)</option>
+                            <option value="litecoin">Litecoin (LTC)</option>
+                            <option value="cardano">Cardano (ADA)</option>
+                            <option value="solana">Solana (SOL)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cryptoAmount">Amount to Invest ($) *</label>
+                        <input type="number" id="cryptoAmount" min="10" step="0.01" placeholder="Minimum $10">
+                    </div>
+                    
+                    <div class="crypto-rates">
+                        <h4>Current Exchange Rates</h4>
+                        <div class="rate-row">
+                            <span>1 BTC =</span>
+                            <span class="rate-value">$34,567.89</span>
+                        </div>
+                        <div class="rate-row">
+                            <span>1 ETH =</span>
+                            <span class="rate-value">$1,845.67</span>
+                        </div>
+                        <div class="rate-row">
+                            <span>1 LTC =</span>
+                            <span class="rate-value">$78.90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="crypto-summary">
+                        <div class="summary-row">
+                            <span>Investment Amount:</span>
+                            <span id="summaryCryptoAmount">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Exchange Fee (0.5%):</span>
+                            <span id="summaryCryptoFee">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>You Will Receive:</span>
+                            <span id="summaryCryptoReceive">0.00000000 BTC</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Cost:</span>
+                            <span id="summaryCryptoTotal">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="confirmCrypto">Buy Cryptocurrency</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Flight Screen -->
+    <div id="bookFlightScreen" class="screen hidden">
+        <div class="flight-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Book Flight</h2>
+                <div class="header-placeholder"></div>
+            </div>
+            
+            <div class="flight-content">
+                <div class="flight-card">
+                    <h3>Book a Flight</h3>
+                    <p class="subtitle">Search and book flights worldwide</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="flightFrom">From *</label>
+                            <input type="text" id="flightFrom" placeholder="City or airport">
+                        </div>
+                        <div class="form-group">
+                            <label for="flightTo">To *</label>
+                            <input type="text" id="flightTo" placeholder="City or airport">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="flightDate">Departure Date *</label>
+                        <input type="date" id="flightDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="flightPassenger">Passenger Name *</label>
+                        <input type="text" id="flightPassenger" placeholder="Full name as on passport">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="flightClass">Travel Class *</label>
+                        <select id="flightClass">
+                            <option value="economy">Economy</option>
+                            <option value="premium">Premium Economy</option>
+                            <option value="business">Business</option>
+                            <option value="first">First Class</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flight-pricing">
+                        <h4>Estimated Pricing</h4>
+                        <div class="price-row">
+                            <span>Base Fare:</span>
+                            <span id="baseFare">$0.00</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Taxes & Fees:</span>
+                            <span id="flightTaxes">$0.00</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Total Price:</span>
+                            <span id="flightTotal">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="confirmFlight">Book Flight</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Support Screen -->
+    <div id="customerSupportScreen" class="screen hidden">
+        <div class="support-container">
+            <div class="screen-header">
+                <button class="btn-back" data-screen="dashboard">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2>Customer Support</h2>
+                <div class="header-placeholder"></div>
+            </div>
+            
+            <div class="support-content">
+                <div class="support-card">
+                    <div class="bot-header">
+                        <div class="bot-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3>Nationwide Bank Bot</h3>
+                            <p class="subtitle">I'm here to help you 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot">
+                                <div class="message-content">
+                                    <p>Hello! I'm your Nationwide Bank assistant. How can I help you today?</p>
+                                </div>
+                                <span class="message-time">10:00 AM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-questions">
+                            <h4>Quick Questions</h4>
+                            <div class="questions-grid">
+                                <button class="question-btn" data-question="balance">Check my balance</button>
+                                <button class="question-btn" data-question="card">Block my card</button>
+                                <button class="question-btn" data-question="deposit">How to deposit</button>
+                                <button class="question-btn" data-question="transfer">Transfer limits</button>
+                                <button class="question-btn" data-question="contact">Contact support</button>
+                                <button class="question-btn" data-question="hours">Bank hours</button>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Type your question here...">
+                            <button class="btn-send" id="sendMessage">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIN Verification Modal -->
+    <div class="modal-overlay hidden" id="pinModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Transaction Verification</h3>
+                <button class="close-modal" id="closePinModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-content">
+                <div class="verification-info">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Verify Your Identity</h4>
+                    <p>Please enter your 4-digit PIN to confirm this transaction</p>
+                    
+                    <div class="transaction-summary">
+                        <div class="summary-item">
+                            <span>Transaction Type:</span>
+                            <span id="pinTransactionType">Deposit</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Amount:</span>
+                            <span id="pinTransactionAmount">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pin-verification">
+                    <div class="pin-display-verify">
+                        <div class="pin-digit-verify" id="pinVerify1"></div>
+                        <div class="pin-digit-verify" id="pinVerify2"></div>
+                        <div class="pin-digit-verify" id="pinVerify3"></div>
+                        <div class="pin-digit-verify" id="pinVerify4"></div>
+                    </div>
+                    
+                    <div class="pin-keypad-verify">
+                        <div class="pin-row">
+                            <button class="pin-key-verify" data-value="1">1</button>
+                            <button class="pin-key-verify" data-value="2">2</button>
+                            <button class="pin-key-verify" data-value="3">3</button>
+                        </div>
+                        <div class="pin-row">
+                            <button class="pin-key-verify" data-value="4">4</button>
+                            <button class="pin-key-verify" data-value="5">5</button>
+                            <button class="pin-key-verify" data-value="6">6</button>
+                        </div>
+                        <div class="pin-row">
+                            <button class="pin-key-verify" data-value="7">7</button>
+                            <button class="pin-key-verify" data-value="8">8</button>
+                            <button class="pin-key-verify" data-value="9">9</button>
+                        </div>
+                        <div class="pin-row">
+                            <button class="pin-key-verify" data-value="clear">Clear</button>
+                            <button class="pin-key-verify" data-value="0">0</button>
+                            <button class="pin-key-verify" data-value="backspace">
+                                <i class="fas fa-backspace"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="verification-error hidden" id="pinVerifyError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Incorrect PIN. Please try again.</span>
+                    </div>
+                </div>
+                
+                <div class="loading-circle hidden" id="pinLoading">
+                    <div class="spinner"></div>
+                    <p>Processing transaction...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal-overlay hidden" id="receiptModal">
+        <div class="modal-container receipt">
+            <div class="modal-header">
+                <h3>Transaction Receipt</h3>
+                <div class="receipt-actions">
+                    <button class="btn-icon" id="printReceipt">
+                        <i class="fas fa-print"></i>
+                    </button>
+                    <button class="close-modal" id="closeReceiptModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="modal-content">
+                <div class="receipt-content" id="receiptContent">
+                    <!-- Receipt will be generated here -->
+                </div>
+                
+                <div class="receipt-footer">
+                    <p>Thank you for banking with Nationwide Bank PLC</p>
+                    <p class="small">This is an electronic receipt. Please save for your records.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
